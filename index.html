@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="uz">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>💖 Мунисахон Quiz</title>
+
+<style>
+
+body {
+
+  margin: 0;
+
+  font-family: Arial;
+
+  height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+
+}
+
+.screen {
+
+  background: white;
+
+  padding: 40px;
+
+  border-radius: 20px;
+
+  width: 90%;
+
+  max-width: 500px;
+
+  text-align: center;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+  position: relative;
+
+}
+
+button {
+
+  padding: 10px 15px;
+
+  margin: 10px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #ff3366;
+
+  color: white;
+
+  cursor: pointer;
+
+}
+
+button:hover {
+
+  background: #cc0044;
+
+}
+
+.hidden {
+
+  display: none;
+
+}
+
+.run {
+
+  position: absolute;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SCREEN 0 -->
+
+<div class="screen" id="start">
+
+  <h1>💖 Мунисахон Quiz</h1>
+
+  <p>Бошлаш учун бос 👇</p>
+
+  <button onclick="next(0)">START 💌</button>
+
+</div>
+
+<!-- QUESTION 1 -->
+
+<div class="screen hidden" id="q1">
+
+  <p>1. Мен кимни кўпроқ ўйлайман?</p>
+
+  <button onclick="next(1)">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">Бошқа 😏</button>
+
+</div>
+
+<!-- QUESTION 2 -->
+
+<div class="screen hidden" id="q2">
+
+  <p>2. Менинг юрагим кимники?</p>
+
+  <button onclick="next(2)">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">Телефон 📱</button>
+
+</div>
+
+<!-- QUESTION 3 -->
+
+<div class="screen hidden" id="q3">
+
+  <p>3. Ким менинг бахтим?</p>
+
+  <button onclick="next(3)">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">YouTube 😂</button>
+
+</div>
+
+<!-- QUESTION 4 -->
+
+<div class="screen hidden" id="q4">
+
+  <p>4. Ким менга керак?</p>
+
+  <button onclick="next(4)">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">Ҳеч ким 😆</button>
+
+</div>
+
+<!-- QUESTION 5 -->
+
+<div class="screen hidden" id="q5">
+
+  <p>5. Ким менинг орзум?</p>
+
+  <button onclick="next(5)">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">Ойлик 💸</button>
+
+</div>
+
+<!-- QUESTION 6 -->
+
+<div class="screen hidden" id="q6">
+
+  <p>6. Кимни кутиб яшайман?</p>
+
+  <button onclick="next(6)">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">Кеча 😆</button>
+
+</div>
+
+<!-- QUESTION 7 -->
+
+<div class="screen hidden" id="q7">
+
+  <p>7. Кимни кўрсам юрагим тез уради?</p>
+
+  <button onclick="next(7)">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">ТикТок 😂</button>
+
+</div>
+
+<!-- QUESTION 8 -->
+
+<div class="screen hidden" id="q8">
+
+  <p>8. Ким мен учун ҳамма нарса?</p>
+
+  <button onclick="next(8)">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">Ҳеч ким 😏</button>
+
+</div>
+
+<!-- QUESTION 9 -->
+
+<div class="screen hidden" id="q9">
+
+  <p>9. Ким билан бахтлиман?</p>
+
+  <button onclick="next(9)">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">Дўстлар 😆</button>
+
+</div>
+
+<!-- QUESTION 10 -->
+
+<div class="screen hidden" id="q10">
+
+  <p>10. Мен ким билан учрашмоқчиман?</p>
+
+  <button onclick="finish()">Сен ❤️</button>
+
+  <button onmouseover="runAway(this)">Ҳеч ким 😏</button>
+
+</div>
+
+<!-- FINAL -->
+
+<div class="screen hidden" id="final">
+
+  <h2>💖 НАТИЖА</h2>
+
+  <p>Мунисахон...<br>сен менинг ҳаётимнинг энг чиройли қисмисан 💕</p>
+
+</div>
+
+<script>
+
+let current = 0;
+
+function next(q){
+
+  document.getElementById("start").classList.add("hidden");
+
+  document.getElementById("q"+(q)).classList.add("hidden");
+
+  let nextQ = q + 1;
+
+  if(nextQ <= 10){
+
+    document.getElementById("q"+nextQ).classList.remove("hidden");
+
+  }
+
+}
+
+function finish(){
+
+  document.getElementById("q10").classList.add("hidden");
+
+  document.getElementById("final").classList.remove("hidden");
+
+}
+
+function runAway(btn){
+
+  btn.classList.add("run");
+
+  btn.style.left = Math.random()*200 + "px";
+
+  btn.style.top = Math.random()*200 + "px";
+
+}
+
+</script>
+
+</body>
+
+</html>
